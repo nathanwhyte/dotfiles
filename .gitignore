@@ -1,0 +1,17 @@
+# defualt
+.DS_Store
+.idea
+*.log
+tmp/
+
+# fcitx
+fcitx/clipboard/*
+fcitx/dbus/*
+
+# xmonad
+xmonad.hi
+xmonad.o
+
+# zsh
+zsh/.zshcompdump
+zsh/.zhistory
