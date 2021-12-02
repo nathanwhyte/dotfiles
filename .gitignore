@@ -8,10 +8,13 @@ tmp/
 fcitx/clipboard/*
 fcitx/dbus/*
 
+# libreoffice
+*.xcu
+
 # xmonad
-xmonad.hi
-xmonad.o
+*.hi
+*.o
 
 # zsh
-zsh/.zshcompdump
-zsh/.zhistory
+.zshcompdump
+.zhistory
