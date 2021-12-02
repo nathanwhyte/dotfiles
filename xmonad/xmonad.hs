@@ -240,7 +240,7 @@ myLayoutHook =
         ||| grid
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" main ", " emacs ", " algo ", " jpn ", " geo ", " cmplr ", " chat ", " music ", " temp "]
+myWorkspaces = [" main ", " emacs ", " algo ", " jpn ", " geo ", " cmplrs ", " chat ", " music ", " temp "]
 
 myWorkspaceIndices = M.fromList $ zip myWorkspaces [1 ..] -- (,) == \x y -> (x,y)
 
@@ -396,7 +396,7 @@ myKeys =
     ("C-e i", spawn (myEmacs ++ "--eval '(erc)'")), -- erc irc client
     ("C-e v", spawn (myEmacs ++ "--eval '(+vterm/here nil)'")), -- vterm if on Doom Emacs
     ("C-e e", spawn "emacsclient --eval '(emacs-everywhere)'"), -- launch emacs-everywhere
-    ("C-e x", spawn "emacs ~/.xmonad/xmonad.hs"), -- open xmonad config file in emacs
+    ("C-e x", spawn "emacs ~/.config/xmonad/xmonad.hs"), -- open xmonad config file in emacs
 
     -- KB_GROUP Multimedia Keys
     ("<XF86AudioPlay>", spawn "mocp --play"),
