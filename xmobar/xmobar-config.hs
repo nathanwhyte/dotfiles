@@ -35,5 +35,5 @@ Config { font    = "xft:Source Code Pro:weight=bold:pixelsize=10:antialias=true:
                     ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = " %UnsafeStdinReader% }{ <fc=#98be65> %battery% </fc><fc=#666666>|</fc><fc=#A9A1E1> <action=`alacritty -e sudo iftop`>%wlan0%</action> </fc><fc=#666666>|</fc><fc=#ecbe7b> <action=`alacritty -e htop`>%cpu%</action> </fc><fc=#666666>|</fc><fc=#ff6c6b> <action=`alacritty -e htop`>%memory%</action></fc><fc=#51afef> <fc=#666666>|</fc> <action=`alacritty -e htop`>%disku%</action> </fc><fc=#666666>|</fc><fc=#46d9ff> <action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action> </fc><fc=#666666><fn=1>|</fn></fc>%trayerpad%"
+    , template = " %UnsafeStdinReader% }{ <fc=#98be65> %battery% </fc><fc=#666666>|</fc><fc=#A9A1E1> <action=`alacritty -e sudo iftop`>%wlan0%</action> </fc><fc=#666666>|</fc><fc=#ecbe7b> <action=`alacritty -e htop`>%cpu%</action> </fc><fc=#666666>|</fc><fc=#ff6c6b> <action=`alacritty -e htop`>%memory%</action></fc><fc=#51afef> <fc=#666666>|</fc> <action=`alacritty -e htop`>%disku%</action> </fc><fc=#666666>|</fc><fc=#46d9ff> <action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(org-agenda))'`>%date%</action> </fc><fc=#666666><fn=1>|</fn></fc>%trayerpad%"
 }
