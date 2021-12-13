@@ -240,7 +240,7 @@ myLayoutHook =
         ||| grid
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" main ", " emacs ", " algo ", " jpn ", " geo ", " cmplrs ", " chat ", " music ", " temp "]
+myWorkspaces = [" main ", " dev ", " chem ", " swe ", " kanji ", " distr ", " chat ", " cli ", " temp "]
 
 myWorkspaceIndices = M.fromList $ zip myWorkspaces [1 ..] -- (,) == \x y -> (x,y)
 
@@ -273,7 +273,7 @@ myManageHook =
       -- send some programs to a specific workspace
       className =? "discord" --> doShift (myWorkspaces !! 6),
       -- send browser tabs for different classes to different workspaces
-      title =? "Algorithms - Brave" --> doShift (myWorkspaces !! 2),
+      title =? "Chemistry - Brave" --> doShift (myWorkspaces !! 2),
       title =? "Japanese IV - Brave" --> doShift (myWorkspaces !! 3),
       title =? "Geology - Brave" --> doShift (myWorkspaces !! 4),
       title =? "Compilers - Brave" --> doShift (myWorkspaces !! 5),
@@ -306,6 +306,8 @@ myKeys =
     ("M-S-a", killAll), -- Kill all windows on current workspace
 
     -- KB_GROUP Workspaces
+    ("M-`", nextScreen),  -- Switch focus to next monitor
+    ("M-S-`", prevScreen),  -- Switch focus to prev monitor
     ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP), -- Shifts focused window to next ws
     ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP), -- Shifts focused window to prev ws
 
@@ -371,7 +373,6 @@ myKeys =
     ("M-s m", namedScratchpadAction myScratchPads "spotify"),
     ("M-s h", namedScratchpadAction myScratchPads "htop"),
     ("M-s r", namedScratchpadAction myScratchPads "ranger"),
-    ("M-s n", namedScratchpadAction myScratchPads "neofetch"),
 
     -- screenshots
     ("M-s s", spawn "flameshot gui"),
@@ -383,10 +384,10 @@ myKeys =
     ("M-p l", spawn "systemctl suspend"),
 
     -- jump to specific workspaces
-    ("M-z a", windows $ W.greedyView (myWorkspaces !! 2)),
-    ("M-z j", windows $ W.greedyView (myWorkspaces !! 3)),
-    ("M-z g", windows $ W.greedyView (myWorkspaces !! 4)),
-    ("M-z c", windows $ W.greedyView (myWorkspaces !! 5)),
+    ("M-z c", windows $ W.greedyView (myWorkspaces !! 2)),
+    ("M-z s", windows $ W.greedyView (myWorkspaces !! 3)),
+    ("M-z k", windows $ W.greedyView (myWorkspaces !! 4)),
+    ("M-z t", windows $ W.greedyView (myWorkspaces !! 5)),
     ("M-z d", windows $ W.greedyView (myWorkspaces !! 6)),
 
     -- KB_GROUP Emacs (CTRL-e followed by a key)
@@ -416,7 +417,8 @@ myKeys =
 
 main :: IO ()
 main = do
-  xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar-config.hs"
+  xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobar-config.hs"
+  xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobar-config.hs"
   xmonad $
     ewmh
       def
@@ -440,7 +442,9 @@ main = do
               namedScratchpadFilterOutWorkspacePP $
                 xmobarPP
                   { -- the following variables beginning with 'pp' are settings for xmobar.
-                    ppOutput = hPutStrLn xmproc0, -- xmobar
+                    -- ppOutput = hPutStrLn xmproc0, -- xmobar
+                    ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
+                                  >> hPutStrLn xmproc1 x,
                     ppCurrent = xmobarColor "#C792EA" "" . wrap "<box type=Bottom width=1 mb=2 color=#C792EA>" "</box>", -- Current workspace
                     ppVisible = xmobarColor "#C792EA" "" . clickable, -- Visible but not current workspace
                     ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=1 mb=2 color=#82AAFF>" "</box>" . clickable, -- Hidden workspaces

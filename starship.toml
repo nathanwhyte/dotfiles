@@ -28,7 +28,7 @@ disabled = false
 # Prompt
 [character]
 # success_symbol = " [╰─λ](bold blue)"
-success_symbol = " [↝ ](bold blue)"
+success_symbol = " [↝ ](bold green)"
 error_symbol = " [× ](bold red)"
 
 # SYMBOLS
@@ -80,6 +80,7 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+disabled = true
 
 [package]
 symbol = " "
