@@ -30,13 +30,12 @@
 (after! org
   (setq org-directory "~/Dropbox/Org/")
   (setq org-agenda-files '("~/Dropbox/Org/planner/planner.org"
-                           "~/Dropbox/Org/school/fall-21/fall-21.org"
-                           "~/Dropbox/Org/school/fall-21/algorithms/algo.org"
-                           "~/Dropbox/Org/school/fall-21/japanese/japanese.org"
-                           "~/Dropbox/Org/school/fall-21/geology/geo.org"
-                           "~/Dropbox/Org/school/fall-21/compilers/compilers.org"
-                           "~/Dropbox/Org/school/career/career.org"
-                           "~/Dropbox/Org/school/fall-21/clubs/acm/mentorship.org")))
+                           "~/Dropbox/Org/school/spring-22/spring-22.org"
+                           "~/Dropbox/Org/school/spring-22/chemistry/chemistry.org"
+                           "~/Dropbox/Org/school/spring-22/distributed/distributed.org"
+                           "~/Dropbox/Org/school/spring-22/kanji/kanji.org"
+                           "~/Dropbox/Org/school/spring-22/swe/swe.org"
+                           "~/Dropbox/Org/school/career/career.org")))
 
 (after! projectile
   (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up)
