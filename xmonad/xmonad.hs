@@ -255,12 +255,12 @@ myManageHook =
     -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
     -- I'm doing it this way because otherwise I would have to write out the full
     -- name of my workspaces and the names would be very long if using clickable workspaces.
-    [ className =? "confirm" --> doFloat,
-      className =? "file_progress" --> doFloat,
-      className =? "dialog" --> doFloat,
-      className =? "download" --> doFloat,
-      className =? "error" --> doFloat,
-      className =? "notification" --> doFloat,
+    [ className =? "confirm" --> doCenterFloat,
+      className =? "file_progress" --> doCenterFloat,
+      className =? "dialog" --> doCenterFloat,
+      className =? "download" --> doCenterFloat,
+      className =? "error" --> doCenterFloat,
+      className =? "notification" --> doCenterFloat,
       className =? "pinentry-gtk-2" --> doFloat,
       className =? "splash" --> doFloat,
       className =? "toolbar" --> doFloat,
@@ -269,6 +269,7 @@ myManageHook =
       -- float Thunar pop-ups
       title =? "File Operation Progress" --> doCenterFloat,
       title =? "Confirm to replace files" --> doCenterFloat,
+      title =? "Save File" --> doCenterFloat,
       (className =? "thunar" <&&> title =? "Open") --> doCenterFloat,
       -- send some programs to a specific workspace
       className =? "discord" --> doShift (myWorkspaces !! 6),
@@ -417,7 +418,7 @@ myKeys =
 
 main :: IO ()
 main = do
-  xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobar-config.hs"
+  xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar-config.hs"
   xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobar-config.hs"
   xmonad $
     ewmh

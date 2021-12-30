@@ -11,6 +11,10 @@ if [ -d "$HOME/.emacs.d/bin" ]; then
     export PATH=$HOME/.emacs.d/bin:$PATH
 fi
 
+if [ -d "/usr/bin/ghcup" ]; then
+    export PATH=$HOME/.emacs.d/bin:$PATH
+fi
+
 eval "$(starship init zsh)"
 function set_win_title(){
     echo -ne "\033]0; $USER@$HOST : ${PWD/$HOME/~} \007"
@@ -130,4 +134,4 @@ alias syy='sudo pacman -Syy'  # update mirrors
 alias syu='sudo pacman -Syu'  # update software
 
 ## Aliases for ledger commands
-alias balance='~/Dropbox/Code/scripts/monthly-balance.sh $1'
+alias balance='~/Code/scripts/monthly-balance.sh $1'
